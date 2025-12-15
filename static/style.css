@@ -1,0 +1,61 @@
+:root{
+  --bg: #f2fbf4;        /* 아주 연한 연녹색 배경 */
+  --card: #ffffff;      /* 카드(흰색) */
+  --line: #cfe9d6;      /* 연녹색 테두리 */
+  --accent: #5fbf7a;    /* 포인트 연녹색 */
+  --accent-soft:#e6f6ea;/* 연녹색 버튼 배경 */
+  --text:#1f2a24;       /* 진한 글자 */
+}
+
+body{
+  font-family: Arial, sans-serif;
+  margin: 40px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+h1,h2,h3{
+  margin: 0 0 12px 0;
+}
+
+p{
+  line-height: 1.6;
+  margin: 10px 0;
+}
+
+a{
+  padding: 10px 14px;
+  margin: 6px 6px 0 0;
+  display: inline-block;
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+a:hover{
+  border-color: var(--accent);
+}
+
+.card{
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+  margin: 14px 0;
+}
+
+.badge{
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--accent-soft);
+}
+
+hr{
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 18px 0;
+}

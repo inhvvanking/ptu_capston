@@ -1,0 +1,72 @@
+
+<head>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<div class="card">
+  <h2>평균 행동 점수: {{ avg }}</h2>
+
+  <p>
+  <b>[점수 산정 기준]</b><br>
+  본 점수는 분리수거, 대중교통 이용, 다회용 컵 사용 등
+  일상에서 실천 가능한 친환경 행동 문항의 평균값을 기반으로 산출되었습니다.
+  </p>
+</div>
+
+{% if summary %}
+<div class="card">
+  <b>📈 시뮬레이션 결과 요약</b><br>
+  평균 행동 점수: {{ summary.before }} → {{ summary.after }}
+  ({{ summary.diff }} 변화)
+</div>
+{% endif %}
+
+<div class="card">
+  <p><b>⚠ 실천이 가장 낮은 행동:</b> {{ lowest_action }}</p>
+  <p><b>[결과 해석]</b> {{ interpretation }}</p>
+</div>
+
+<div class="card">
+  <p>
+  <b>[그래프 해석 가이드]</b><br>
+  선그래프는 행동 항목별 평균 점수의 변화 흐름을 보여주며,
+  시뮬레이션 전후의 상대적 차이를 비교하기 위해 사용되었습니다.
+  </p>
+
+  {{ graph|safe }}
+</div>
+
+<div class="card">
+  <h3>행동 개선 시뮬레이션</h3>
+  <p style="font-size:0.9em;">
+  ※ 본 시뮬레이션은 실제 예측이 아닌,
+  특정 행동이 개선되었을 경우를 가정한 시나리오 분석입니다.
+  </p>
+
+  <a href="?action=tumbler{% if current_grade %}&grade={{ current_grade }}{% endif %}{% if current_major %}&major={{ current_major }}{% endif %}">텀블러 +1</a>
+  <a href="?action=transport{% if current_grade %}&grade={{ current_grade }}{% endif %}{% if current_major %}&major={{ current_major }}{% endif %}">대중교통 +1</a>
+  <a href="?action=disposable{% if current_grade %}&grade={{ current_grade }}{% endif %}{% if current_major %}&major={{ current_major }}{% endif %}">일회용품 거부 +1</a>
+  <a href="?action=campaign{% if current_grade %}&grade={{ current_grade }}{% endif %}{% if current_major %}&major={{ current_major }}{% endif %}">전체 행동 +0.5</a>
+</div>
+
+<div class="card">
+  <h3>학년 필터</h3>
+  {% for g in grades %}
+    <a href="?grade={{ g }}">{{ g }}</a>
+  {% endfor %}
+
+  <h3>전공계열 필터</h3>
+  {% for m in majors %}
+    <a href="?major={{ m }}">{{ m }}</a>
+  {% endfor %}
+</div>
+
+<div class="card">
+  <p>
+  <b>[활용 방안]</b><br>
+  본 분석 결과는 학생회 친환경 캠페인 기획,
+  학년·전공별 맞춤 홍보 전략 수립 등에 활용될 수 있습니다.
+  </p>
+
+  <a href="/result">🔄 초기화</a>
+</div>
